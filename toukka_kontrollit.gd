@@ -18,10 +18,11 @@ func _physics_process(delta):
 	var half = (total_lanes - 1) / 2
 	current_lane = clamp(current_lane, -half, half)
 
-	# Calculate desired X position based on lane
+	# Calculate desired X position
 	var target_x = current_lane * lane_offset
-	global_position.x = target_x  # Instantly warp to new lane
+	# Smooth movement to lane
+	global_position.x = lerp(global_position.x, target_x, delta * 10.0)
 
-	# Move forward constantly (Z-axis)adaa
-	# Apply movement
+	# Remove forward movement if not needed
+	# velocity.z = -move_speed
 	move_and_slide()
