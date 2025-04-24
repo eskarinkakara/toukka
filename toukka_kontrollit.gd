@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-@export var move_speed := 5.0               # Forward speed
 @export var lane_offset := 2.0              # Distance between lanes
 @export var total_lanes := 3                # Should be an odd number (so there's a center lane)
 
@@ -24,6 +23,5 @@ func _physics_process(delta):
 	global_position.x = target_x  # Instantly warp to new lane
 
 	# Move forward constantly (Z-axis)
-	velocity.z = -move_speed
 	# Apply movement
 	move_and_slide()
