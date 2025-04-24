@@ -9,8 +9,10 @@ var current_lane := 0                       # 0 = center, -1 = left, 1 = right
 func _physics_process(delta):
 	# Handle input (one press per frame)
 	if Input.is_action_just_pressed("move_left"):
+		print("Move left")
 		current_lane -= 1
 	elif Input.is_action_just_pressed("move_right"):
+		print("Move right")
 		current_lane += 1
 
 	# Clamp to available lanes
@@ -23,6 +25,5 @@ func _physics_process(delta):
 
 	# Move forward constantly (Z-axis)
 	velocity.z = -move_speed
-
 	# Apply movement
 	move_and_slide()
