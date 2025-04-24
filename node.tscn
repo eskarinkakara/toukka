@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://qt5jmca5lsgw"]
+[gd_scene load_steps=6 format=3 uid="uid://qt5jmca5lsgw"]
+
+[ext_resource type="Script" uid="uid://dce6qcu4xisuq" path="res://toukka_kontrollit.gd" id="1_sy5k4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nxiqb"]
 
@@ -11,11 +13,12 @@
 [node name="Peli" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 0.189, 0, 0, 0, 4.34, 0, 0, 0)
+transform = Transform3D(-1.09278e-06, 0, 4.34, 0, 0.189, 0, -25, 0, -1.89707e-07, 0, 0, 0)
 mesh = SubResource("BoxMesh_nxiqb")
 
-[node name="Toukka (testi)" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+[node name="Toukka (testi)" type="CharacterBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.37114e-07, 0, 10)
+script = ExtResource("1_sy5k4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Toukka (testi)"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.35, 0)
@@ -28,3 +31,7 @@ mesh = SubResource("SphereMesh_j2q8x")
 [node name="pää" type="MeshInstance3D" parent="Toukka (testi)"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.1, 0)
 mesh = SubResource("SphereMesh_112p8")
+
+[node name="MainCamera" type="Camera3D" parent="Toukka (testi)"]
+transform = Transform3D(-4.37114e-08, 0.173648, -0.984808, 0, 0.984808, 0.173648, 1, 7.5904e-09, -4.30473e-08, -2.6, 1.378, 0)
+fov = 50.0
