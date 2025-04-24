@@ -32,6 +32,9 @@ mesh = SubResource("SphereMesh_j2q8x")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.1, 0)
 mesh = SubResource("SphereMesh_112p8")
 
-[node name="MainCamera" type="Camera3D" parent="Toukka (testi)"]
-transform = Transform3D(-4.37114e-08, 0.173648, -0.984808, 0, 0.984808, 0.173648, 1, 7.5904e-09, -4.30473e-08, -2.6, 1.378, 0)
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0.007, 2.1, 12)
 fov = 50.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36775, 14.3451)
