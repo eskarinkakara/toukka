@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var lane_offset := 1.0              # Distance between lanes
 @export var total_lanes := 3                # Should be an odd number (so there's a center lane)
-@export var jump_velocity := 6.0			# Hypyn nopeus
+@export var jump_velocity := 4.5			# Hypyn nopeus
 @export var gravity := 10.0					# Gravityn voima
 
 var current_lane := 0                       # 0 = center, -1 = left, 1 = right

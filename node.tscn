@@ -21,7 +21,7 @@ height = 1.1269
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(-1.09278e-06, 0, 4, 0, 0.189, 0, -25, 0, -1.74846e-07, 0, 0, 0)
+transform = Transform3D(-2.18557e-06, 0, 4, 0, 0.189, 0, -50, 0, -1.74846e-07, 0, 0, -10.7072)
 mesh = SubResource("BoxMesh_nxiqb")
 skeleton = NodePath("../..")
 
