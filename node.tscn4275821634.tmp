@@ -13,8 +13,6 @@
 [sub_resource type="SphereMesh" id="SphereMesh_112p8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j2q8x"]
-radius = 0.343516
-height = 1.1269
 
 [node name="Peli" type="Node3D"]
 
@@ -46,7 +44,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.1, 0)
 mesh = SubResource("SphereMesh_112p8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Toukka (testi)"]
-transform = Transform3D(0.857, 0, 0, 0, 1, 0, 0, 0, 0.857, 0, 0.663, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 shape = SubResource("CapsuleShape3D_j2q8x")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
