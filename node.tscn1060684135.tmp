@@ -7,6 +7,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy5k4"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j2q8x"]
+radius = 0.343516
+height = 1.1269
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cpxx"]
 resource_name = "Insect_Praying_Mantis"
 albedo_texture = ExtResource("2_j2q8x")
@@ -135,7 +139,6 @@ bind/31/pose = Transform3D(-1.60724e-16, 0.999453, -0.0330612, 1, 1.56763e-16, -
 
 [sub_resource type="Animation" id="Animation_73i8p"]
 resource_name = "mantis_run"
-loop_mode = 1
 tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -1029,7 +1032,6 @@ tracks/24/keys = PackedFloat32Array(0, 1, 0.285845, 0.646755, -0.646755, -0.2858
 
 [sub_resource type="Animation" id="Animation_cn7dg"]
 resource_name = "mantis_idle"
-loop_mode = 1
 tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -1216,10 +1218,6 @@ _data = {
 &"mantis_walk": SubResource("Animation_8bylo")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j2q8x"]
-radius = 0.343516
-height = 1.1269
-
 [node name="Peli" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -1233,37 +1231,41 @@ skeleton = NodePath("../..")
 transform = Transform3D(-1.09278e-06, 0, 4, 0, 0.189, 0, -25, 0, -1.74846e-07, 0, 0, 0)
 shape = SubResource("BoxShape3D_sy5k4")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.368, 12)
-
-[node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0.007, 2.1, 12)
-fov = 50.0
-
-[node name="Toukka Model" type="CharacterBody3D" parent="."]
-transform = Transform3D(-2.965, 0, -2.59209e-07, 0, 2.965, 0, 2.59209e-07, 0, -2.965, 4.37114e-07, 0, 10)
+[node name="Toukka (testi)" type="CharacterBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.37114e-07, 0, 10)
 script = ExtResource("1_sy5k4")
+lane_offset = null
+total_lanes = null
+jump_velocity = null
+gravity = null
 
-[node name="Sketchfab_model" type="Node3D" parent="Toukka Model"]
-transform = Transform3D(0.837, 4.9893e-15, 2.18089e-22, 0, -3.65864e-08, 0.837, 4.9893e-15, -0.837, -3.65864e-08, 0, 0.0792159, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Toukka (testi)"]
+transform = Transform3D(0.857, 0, 0, 0, 1, 0, 0, 0, 0.857, 0, 0.663, 0)
+shape = SubResource("CapsuleShape3D_j2q8x")
 
-[node name="251a011ab5bc4bf69ec8589b7594eb62_fbx" type="Node3D" parent="Toukka Model/Sketchfab_model"]
+[node name="Toukka Model" type="Node3D" parent="Toukka (testi)"]
+transform = Transform3D(-1.29604e-07, 0, 2.965, 0, 2.965, 0, -2.965, 0, -1.29604e-07, 0, 0, 0)
+
+[node name="Sketchfab_model" type="Node3D" parent="Toukka (testi)/Toukka Model"]
+transform = Transform3D(2.74182, 0, 0, 0, 6.08806e-16, 2.74182, 0, -2.74182, 6.08806e-16, 0, 0, 0)
+
+[node name="251a011ab5bc4bf69ec8589b7594eb62_fbx" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model"]
 transform = Transform3D(0.055, 0, 0, 0, -2.40413e-09, -0.055, 0, 0.055, -2.40413e-09, 0, 0, 0)
 
-[node name="Object_2" type="Node3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx"]
+[node name="Object_2" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx"]
 
-[node name="RootNode" type="Node3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2"]
+[node name="RootNode" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2"]
 
-[node name="Ant_Simulation_Componets" type="Node3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode"]
+[node name="Ant_Simulation_Componets" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode"]
 
-[node name="Other_Insects" type="Node3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets"]
+[node name="Other_Insects" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets"]
 
-[node name="Mantis" type="Node3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects"]
+[node name="Mantis" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects"]
 transform = Transform3D(2.39303, 0, 0, 0, 2.39303, 0, 0, 0, 2.39303, 0, 0, 0)
 
-[node name="Object_7" type="Node3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis"]
+[node name="Object_7" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis"]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis/Object_7"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis/Object_7"]
 bones/0/name = "_rootJoint"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -1297,21 +1299,21 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(0.74769, -0.242885, 0.618034, -0.126416, 0.861624, 0.491552, -0.651904, -0.445658, 0.613523, -0.00394361, -0.00295017, 0.284637)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.00394361, -0.00295017, 0.284637)
-bones/4/rotation = Quaternion(-0.346752, 0.193117, 0.0591771, 0.915951)
+bones/4/rotation = Quaternion(-0.261028, 0.353699, 0.0324385, 0.897613)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Bone Leg 02 Calf L_04"
 bones/5/parent = 4
 bones/5/rest = Transform3D(0.264282, -0.462126, -0.846519, 0.00256743, 0.87806, -0.478543, 0.964442, 0.124297, 0.233242, 0.0255898, 0.0111113, 0.475944)
 bones/5/enabled = true
 bones/5/position = Vector3(0.0255898, 0.0111113, 0.475944)
-bones/5/rotation = Quaternion(0.198455, -0.61162, 0.163473, 0.748207)
+bones/5/rotation = Quaternion(0.195563, -0.587481, 0.150748, 0.770647)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Bone Foot 02 L_05"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.819851, 4.26603e-09, 0.572577, 2.22045e-16, 1, -7.45058e-09, -0.572577, 6.10836e-09, 0.819851, -5.68434e-14, 0, 0.417565)
 bones/6/enabled = true
 bones/6/position = Vector3(-5.68434e-14, 0, 0.417565)
-bones/6/rotation = Quaternion(3.40404e-09, 0.406242, -1.51337e-09, 0.913766)
+bones/6/rotation = Quaternion(3.55355e-09, 0.300124, -1.11805e-09, 0.9539)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Bone Leg 02 Root R_06"
 bones/7/parent = 2
@@ -1325,21 +1327,21 @@ bones/8/parent = 7
 bones/8/rest = Transform3D(0.636223, -0.208418, 0.742821, -0.0418038, 0.952092, 0.302939, -0.770372, -0.22379, 0.59703, -0.00394361, -0.00295017, 0.284637)
 bones/8/enabled = true
 bones/8/position = Vector3(-0.00394361, -0.00295017, 0.284637)
-bones/8/rotation = Quaternion(-0.154475, 0.420938, 0.0384695, 0.893011)
+bones/8/rotation = Quaternion(-0.147564, 0.423922, 0.0466771, 0.892377)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone Leg 02 Calf R_08"
 bones/9/parent = 8
 bones/9/rest = Transform3D(0.655499, -0.280889, -0.701015, 0.00699242, 0.930474, -0.366292, 0.755164, 0.235202, 0.611889, 0.0255898, 0.0111113, 0.475944)
 bones/9/enabled = true
 bones/9/position = Vector3(0.0255898, 0.0111113, 0.475944)
-bones/9/rotation = Quaternion(0.179174, -0.403013, 0.0857163, 0.893381)
+bones/9/rotation = Quaternion(0.168179, -0.40715, 0.0804921, 0.894128)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "Bone Foot 02 R_09"
 bones/10/parent = 9
 bones/10/rest = Transform3D(0.986429, 1.22329e-09, 0.164188, -2.77556e-16, 1, -7.45058e-09, -0.164188, 7.34947e-09, 0.986429, 0, 0, 0.417565)
 bones/10/enabled = true
 bones/10/position = Vector3(0, 0, 0.417565)
-bones/10/rotation = Quaternion(3.71263e-09, 0.0823737, -3.06866e-10, 0.996602)
+bones/10/rotation = Quaternion(3.71263e-09, 0.0823738, -3.06866e-10, 0.996602)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Bone Leg 03 Root L_010"
 bones/11/parent = 2
@@ -1353,21 +1355,21 @@ bones/12/parent = 11
 bones/12/rest = Transform3D(0.985958, -0.165974, -0.0184271, 0.00317414, -0.0916996, 0.995782, -0.166964, -0.981857, -0.0898852, 3.57628e-08, -0.000341725, 0.280936)
 bones/12/enabled = true
 bones/12/position = Vector3(3.57628e-08, -0.000341725, 0.280936)
-bones/12/rotation = Quaternion(-0.628467, -0.103169, 0.0396354, 0.769944)
+bones/12/rotation = Quaternion(-0.736129, 0.0552891, 0.0629613, 0.671635)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "Bone Leg 03 Calf R_012"
 bones/13/parent = 12
 bones/13/rest = Transform3D(0.997013, -0.0183491, -0.0750229, -0.0771099, -0.181388, -0.980384, 0.00438096, 0.98324, -0.182261, 3.57628e-08, 0.000823212, 0.456924)
 bones/13/enabled = true
 bones/13/position = Vector3(3.57628e-08, 0.000823212, 0.456924)
-bones/13/rotation = Quaternion(0.626659, -0.0259559, -0.0286726, 0.778333)
+bones/13/rotation = Quaternion(0.768222, -0.0310649, -0.0229888, 0.639016)
 bones/13/scale = Vector3(1, 0.999999, 1)
 bones/14/name = "Bone Foot 03 R_013"
 bones/14/parent = 13
 bones/14/rest = Transform3D(1, -2.37957e-09, 1.63588e-08, 0, 0.989585, 0.143946, -1.6531e-08, -0.143946, 0.989586, -1.49011e-08, -4.76837e-08, 0.605992)
 bones/14/enabled = true
 bones/14/position = Vector3(-1.49011e-08, -4.76837e-08, 0.605992)
-bones/14/rotation = Quaternion(-0.0729536, 8.24346e-09, 6.02998e-10, 0.997335)
+bones/14/rotation = Quaternion(-0.0721611, 8.24394e-09, 5.96447e-10, 0.997393)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "Bone Leg 03 Root R_014"
 bones/15/parent = 2
@@ -1381,70 +1383,70 @@ bones/16/parent = 15
 bones/16/rest = Transform3D(0.710103, -0.539325, 0.452641, -0.278512, 0.37528, 0.88408, -0.646672, -0.753853, 0.116279, 3.57628e-08, -0.000341725, 0.280936)
 bones/16/enabled = true
 bones/16/position = Vector3(3.57628e-08, -0.000341725, 0.280936)
-bones/16/rotation = Quaternion(-0.63853, 0.230797, 0.0919252, 0.728397)
+bones/16/rotation = Quaternion(-0.551938, 0.370438, 0.0878868, 0.7419)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "Bone Leg 03 Calf L_016"
 bones/17/parent = 16
 bones/17/rest = Transform3D(0.99701, -0.00148722, -0.0772565, -0.0771403, 0.0389439, -0.99626, 0.00449033, 0.99924, 0.0387127, 3.57628e-08, 0.000823212, 0.456924)
 bones/17/enabled = true
 bones/17/position = Vector3(3.57628e-08, 0.000823212, 0.456924)
-bones/17/rotation = Quaternion(0.750407, -0.030476, -0.023777, 0.659846)
+bones/17/rotation = Quaternion(0.692704, -0.028377, -0.0262617, 0.720185)
 bones/17/scale = Vector3(1, 0.999999, 1)
 bones/18/name = "Bone Foot 03 L_017"
 bones/18/parent = 17
 bones/18/rest = Transform3D(1, -3.27538e-09, 1.62032e-08, 1.11022e-16, 0.980174, 0.198136, -1.6531e-08, -0.198136, 0.980175, -1.49011e-08, -4.76837e-08, 0.605992)
 bones/18/enabled = true
 bones/18/position = Vector3(-1.49011e-08, -4.76837e-08, 0.605992)
-bones/18/rotation = Quaternion(-0.0957436, 8.22751e-09, 7.91367e-10, 0.995406)
+bones/18/rotation = Quaternion(-0.0995626, 8.22442e-09, 8.22934e-10, 0.995031)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "Bone Neck_018"
 bones/19/parent = 2
 bones/19/rest = Transform3D(-0.982, 9.93332e-17, -0.188882, 1.2026e-16, 1, -9.93332e-17, 0.188882, -1.2026e-16, -0.982, 0.00556393, 0, -0.318756)
 bones/19/enabled = true
 bones/19/position = Vector3(0.00556393, 0, -0.318756)
-bones/19/rotation = Quaternion(5.92768e-17, 0.999506, -5.92768e-17, -0.031442)
+bones/19/rotation = Quaternion(5.51471e-17, 0.99549, -5.51471e-17, -0.0948691)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "Bone Head_019"
 bones/20/parent = 19
 bones/20/rest = Transform3D(0.532135, 1.89955e-17, 0.846659, -9.53234e-19, 1, -2.18367e-17, -0.846659, 1.0813e-17, 0.532135, 0.0294, 0, 0.969847)
 bones/20/enabled = true
 bones/20/position = Vector3(0.0294, 0, 0.969847)
-bones/20/rotation = Quaternion(-1.23949e-17, 0.484897, 9.93325e-18, 0.874571)
+bones/20/rotation = Quaternion(-2.41518e-17, 0.483666, 1.47566e-17, 0.875253)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "Bone Antennae L_020"
 bones/21/parent = 20
 bones/21/rest = Transform3D(-0.598045, -0.135901, -0.789856, -0.801014, 0.134334, 0.58338, -0.0268226, -0.981572, 0.189197, -0.0924675, 0.0622349, 0.103881)
 bones/21/enabled = true
 bones/21/position = Vector3(-0.0924675, 0.0622349, 0.103881)
-bones/21/rotation = Quaternion(0.580885, 0.163687, 0.479312, 0.637212)
+bones/21/rotation = Quaternion(0.693105, 0.337941, 0.294573, 0.564472)
 bones/21/scale = Vector3(-1, -1, -1)
 bones/22/name = "Bone Antennae R_021"
 bones/22/parent = 20
 bones/22/rest = Transform3D(-0.598046, -0.135902, -0.789856, 0.801013, -0.134335, -0.58338, -0.0268225, -0.981572, 0.189198, -0.0924673, -0.0622349, 0.103881)
 bones/22/enabled = true
 bones/22/position = Vector3(-0.0924673, -0.0622349, 0.103881)
-bones/22/rotation = Quaternion(-0.479312, -0.637212, 0.580885, 0.163687)
+bones/22/rotation = Quaternion(-0.294572, -0.564472, 0.693105, 0.337941)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/name = "Bone Leg 01 Root L_022"
 bones/23/parent = 19
 bones/23/rest = Transform3D(0.0652078, -0.223602, 0.972497, -0.0602846, 0.971908, 0.227509, 0.996049, 0.0734619, -0.0498963, -0.0480886, 0.0356723, 0.658861)
 bones/23/enabled = true
 bones/23/position = Vector3(-0.0480886, 0.0356723, 0.658861)
-bones/23/rotation = Quaternion(-0.681323, -0.104167, 0.722325, -0.056525)
+bones/23/rotation = Quaternion(-0.681323, -0.104168, 0.722325, -0.0565251)
 bones/23/scale = Vector3(-1, -1, -1)
 bones/24/name = "Bone Leg 01 Thigh L_023"
 bones/24/parent = 23
 bones/24/rest = Transform3D(0.553901, -0.566606, 0.610041, 0.296449, 0.818908, 0.491434, -0.778017, -0.0913597, 0.621564, 0.00906372, 0.013311, 0.765906)
 bones/24/enabled = true
 bones/24/position = Vector3(0.00906372, 0.013311, 0.765906)
-bones/24/rotation = Quaternion(-0.164963, 0.259871, 0.251598, 0.91758)
+bones/24/rotation = Quaternion(-0.168396, 0.401074, 0.249377, 0.865213)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/name = "Bone Leg 01 Calf L_024"
 bones/25/parent = 24
 bones/25/rest = Transform3D(-0.0301753, -0.0429429, -0.998622, 6.33299e-08, 0.999077, -0.0429625, 0.999545, -0.00129647, -0.0301475, 1.90735e-07, -9.53674e-08, 0.630387)
 bones/25/enabled = true
 bones/25/position = Vector3(1.90735e-07, -9.53674e-08, 0.630387)
-bones/25/rotation = Quaternion(0.0173132, -0.645434, 0.0146363, 0.76348)
+bones/25/rotation = Quaternion(0.014962, -0.71753, 0.0154206, 0.696196)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/name = "Bone Foot 01 L_025"
 bones/26/parent = 25
@@ -1458,21 +1460,21 @@ bones/27/parent = 19
 bones/27/rest = Transform3D(0.645881, -0.223602, 0.729959, -0.0913039, -0.971908, -0.216929, 0.757958, 0.0734622, -0.648153, -0.0480886, -0.0356723, 0.658861)
 bones/27/enabled = true
 bones/27/position = Vector3(-0.0480886, -0.0356723, 0.658861)
-bones/27/rotation = Quaternion(0.903596, -0.0871258, 0.411665, 0.0803431)
+bones/27/rotation = Quaternion(0.903596, -0.0871257, 0.411666, 0.0803432)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/name = "Bone Leg 01 Thigh R_027"
 bones/28/parent = 27
 bones/28/rest = Transform3D(-0.212766, -0.476824, 0.852859, -0.212535, 0.874531, 0.435918, -0.953708, -0.0885136, -0.287412, 0.00906372, 0.013311, 0.765906)
 bones/28/enabled = true
 bones/28/position = Vector3(0.00906372, 0.013311, 0.765906)
-bones/28/rotation = Quaternion(-0.217844, 0.690632, 0.0988895, 0.68249)
+bones/28/rotation = Quaternion(-0.223671, 0.770505, 0.11272, 0.586164)
 bones/28/scale = Vector3(1, 1, 1)
 bones/29/name = "Bone Leg 01 Calf R_028"
 bones/29/parent = 28
 bones/29/rest = Transform3D(-0.627114, -0.0267336, -0.778468, -6.17933e-06, 0.999411, -0.034316, 0.778927, -0.0215153, -0.626745, 1.90735e-07, -9.53674e-08, 0.630387)
 bones/29/enabled = true
 bones/29/position = Vector3(1.90735e-07, -9.53674e-08, 0.630387)
-bones/29/rotation = Quaternion(-0.00824187, 0.893513, -0.0164139, -0.448662)
+bones/29/rotation = Quaternion(-0.00741254, 0.901841, -0.015477, -0.431727)
 bones/29/scale = Vector3(1, 1, 1)
 bones/30/name = "Bone Foot 01 R_029"
 bones/30/parent = 29
@@ -1486,7 +1488,7 @@ bones/31/parent = 2
 bones/31/rest = Transform3D(0.867167, 5.62892e-17, 0.498018, -3.56472e-17, 1, -5.09563e-17, -0.498018, 2.64347e-17, 0.867167, 7.15256e-08, 0, 0.32021)
 bones/31/enabled = true
 bones/31/position = Vector3(7.15256e-08, 0, 0.32021)
-bones/31/rotation = Quaternion(2.70041e-17, 0.347547, -3.20794e-17, 0.937662)
+bones/31/rotation = Quaternion(2.00241e-17, 0.257714, -2.37876e-17, 0.966221)
 bones/31/scale = Vector3(1, 1, 1)
 bones/32/name = "Praying Mantis"
 bones/32/parent = 2
@@ -1496,19 +1498,21 @@ bones/32/position = Vector3(-0.0407241, 3.44825e-09, 0.11276)
 bones/32/rotation = Quaternion(8.07591e-17, 0.91465, -8.07591e-17, 0.404246)
 bones/32/scale = Vector3(1, 1, 1)
 
-[node name="Object_10" type="MeshInstance3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis/Object_7/Skeleton3D"]
+[node name="Object_10" type="MeshInstance3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis/Object_7/Skeleton3D"]
 mesh = SubResource("ArrayMesh_e0se2")
 skin = SubResource("Skin_qwauc")
 
-[node name="Object_9" type="Node3D" parent="Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis/Object_7"]
+[node name="Object_9" type="Node3D" parent="Toukka (testi)/Toukka Model/Sketchfab_model/251a011ab5bc4bf69ec8589b7594eb62_fbx/Object_2/RootNode/Ant_Simulation_Componets/Other_Insects/Mantis/Object_7"]
 transform = Transform3D(7.96628e-07, 2.39303, -1.46531e-16, 0, 1.46531e-16, 2.39303, 2.39303, -7.96628e-07, 4.87794e-23, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Toukka Model"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Toukka (testi)/Toukka Model"]
 libraries = {
 &"": SubResource("AnimationLibrary_f6cit")
 }
-autoplay = "mantis_idle"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Toukka Model"]
-transform = Transform3D(-1.26343e-08, 0, -0.289039, 0, 0.337268, 0, 0.289039, 0, -1.26343e-08, 0, 0.223609, 0)
-shape = SubResource("CapsuleShape3D_j2q8x")
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.368, 12)
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0.007, 2.1, 12)
+fov = 50.0
