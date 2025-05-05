@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://qt5jmca5lsgw"]
+[gd_scene load_steps=19 format=4 uid="uid://qt5jmca5lsgw"]
 
 [ext_resource type="Script" uid="uid://dce6qcu4xisuq" path="res://toukka_kontrollit.gd" id="1_sy5k4"]
 [ext_resource type="Texture2D" uid="uid://cbj7nsmxwritr" path="res://praying_mantis/textures/Insect_Praying_Mantis_baseColor.png" id="2_j2q8x"]
 [ext_resource type="PackedScene" uid="uid://ddc0s7u1vma6s" path="res://orto-field/orto-field.fbx" id="3_112p8"]
+[ext_resource type="Script" uid="uid://dd0bsdn5ojtv3" path="res://orto-field/tausta.gd" id="3_e2u21"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nxiqb"]
 
@@ -1525,6 +1526,6 @@ transform = Transform3D(1, 0, 0, 0, 0.717385, 0.696677, 0, -0.696677, 0.717385, 
 environment = SubResource("Environment_112p8")
 
 [node name="Tausta" type="Node3D" parent="."]
-
-[node name="orto-field" parent="Tausta" instance=ExtResource("3_112p8")]
-transform = Transform3D(0.542425, 0.0969054, 0.834496, -0.0528125, 0.995294, -0.0812496, -0.838442, 0, 0.54499, -11.8783, -24.5186, 2.4819)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6807)
+script = ExtResource("3_e2u21")
+background_scene = ExtResource("3_112p8")
