@@ -10,6 +10,7 @@ var current_lane := 0                       # 0 = center, -1 = left, 1 = right
 
 func _ready():
 	animation_player = $AnimationPlayer
+	add_to_group("player")
 
 func _physics_process(delta):
 	if is_on_floor() and animation_player.current_animation != "mantis_walk":

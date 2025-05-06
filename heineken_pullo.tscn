@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://s22ji41toh3o"]
+
+[ext_resource type="PackedScene" uid="uid://d38i3n87ubxs" path="res://heineken_bottle.glb" id="1_q2c0c"]
+[ext_resource type="Script" uid="uid://ee3wkuipyybm" path="res://objekti.gd" id="2_usnyp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q2c0c"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_q2c0c")]
+script = ExtResource("2_usnyp")
+
+[node name="heineken_obj_cleaner_materialmerger_gles" parent="Sketchfab_model" index="0"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Object_2" parent="Sketchfab_model/heineken_obj_cleaner_materialmerger_gles" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58102, -2.49109, -0.0899309)
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("CapsuleShape3D_q2c0c")

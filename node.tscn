@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=4 uid="uid://qt5jmca5lsgw"]
+[gd_scene load_steps=22 format=4 uid="uid://qt5jmca5lsgw"]
 
 [ext_resource type="Script" uid="uid://dce6qcu4xisuq" path="res://toukka_kontrollit.gd" id="1_sy5k4"]
 [ext_resource type="Texture2D" uid="uid://cbj7nsmxwritr" path="res://praying_mantis/textures/Insect_Praying_Mantis_baseColor.png" id="2_j2q8x"]
 [ext_resource type="PackedScene" uid="uid://ddc0s7u1vma6s" path="res://orto-field/orto-field.fbx" id="3_112p8"]
 [ext_resource type="PackedScene" uid="uid://b084higv2e8gb" path="res://modular_electricity_poles_4k.blend/sahko_tolppa_1.fbx" id="3_bss38"]
 [ext_resource type="Script" uid="uid://dd0bsdn5ojtv3" path="res://orto-field/tausta.gd" id="3_e2u21"]
+[ext_resource type="Script" uid="uid://dmw1toeoq4smr" path="res://spawnaus.gd" id="6_qn3nj"]
+[ext_resource type="PackedScene" uid="uid://s22ji41toh3o" path="res://heineken_pullo.tscn" id="7_qn3nj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy5k4"]
 
@@ -12,8 +14,9 @@
 script/source = "extends Camera3D
 var initial_position : Vector3              # To store the initial position
 var initial_rotation : Vector3              # To store the initial rotation
-@export var drunk_effect_strength : float = 0.05  # Strength of drunken effect (shake)
-@export var drunk_rotation_strength : float = 1.0 # Strength of drunken rotation effect
+@export var drunk_effect_strength : float = 0.05 * Global.paihtynytStrength  # Strength of drunken effect (shake)
+@export var drunk_rotation_strength : float = 1.0 * Global.paihtynytStrength # Strength of drunken rotation effect
+@export var reset_speed: float = 5.0
 
 # Timer variables for shaking effect
 var shake_time : float = 0.0  # Time to simulate the oscillation
@@ -37,6 +40,14 @@ func _process(delta):
 		rotation_degrees.x = initial_rotation.x + sin(shake_time * 2.5) * drunk_rotation_strength
 		rotation_degrees.y = initial_rotation.y + cos(shake_time * 3.0) * drunk_rotation_strength
 		rotation_degrees.z = initial_rotation.z + sin(shake_time * 2.0) * drunk_rotation_strength
+	else:
+		# Smoothly interpolate position
+		global_position = global_position.lerp(initial_position, delta * reset_speed)
+
+		# Smoothly interpolate rotation (Euler angles)
+		rotation_degrees.x = lerp_angle(rotation_degrees.x, initial_rotation.x, delta * reset_speed)
+		rotation_degrees.y = lerp_angle(rotation_degrees.y, initial_rotation.y, delta * reset_speed)
+		rotation_degrees.z = lerp_angle(rotation_degrees.z, initial_rotation.z, delta * reset_speed)
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cpxx"]
@@ -1279,7 +1290,7 @@ transform = Transform3D(-2.965, 0, -2.59209e-07, 0, 2.965, 0, 2.59209e-07, 0, -2
 script = ExtResource("1_sy5k4")
 
 [node name="Sketchfab_model" type="Node3D" parent="Toukka Model"]
-transform = Transform3D(0.837, 4.9893e-15, 2.18089e-22, 0, -3.65864e-08, 0.837, 4.9893e-15, -0.837, -3.65864e-08, 0, 0.0792159, 0)
+transform = Transform3D(0.3, 1.78828e-15, 7.81682e-23, 0, -1.31134e-08, 0.3, 1.78828e-15, -0.3, -1.31134e-08, 0, 0.0792159, 0)
 
 [node name="251a011ab5bc4bf69ec8589b7594eb62_fbx" type="Node3D" parent="Toukka Model/Sketchfab_model"]
 transform = Transform3D(0.055, 0, 0, 0, -2.40413e-09, -0.055, 0, 0.055, -2.40413e-09, 0, 0, 0)
@@ -1569,3 +1580,7 @@ move_speed = 10.0
 y_level = -12.3
 num_segments = 5
 rotation_offset = Vector3(0, 0, 0)
+
+[node name="oluet" type="Node3D" parent="."]
+script = ExtResource("6_qn3nj")
+prefab = ExtResource("7_qn3nj")
