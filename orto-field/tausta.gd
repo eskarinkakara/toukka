@@ -3,7 +3,9 @@ extends Node3D
 @export var background_scene: PackedScene
 @export var segment_length: float = 200.0
 @export var move_speed: float = 5.0
+@export var y_level: float = -25.0
 @export var num_segments: int = 3
+@export var rotation_offset: Vector3 = Vector3(5.5, 61, -1.5)
 
 var segments: Array[Node3D] = []
 
@@ -13,8 +15,8 @@ func _ready():
 		var seg = background_scene.instantiate()
 		add_child(seg)
 		seg.global_transform.origin.z = -i * segment_length
-		seg.global_transform.origin.y = -25
-		seg.rotation_degrees = Vector3(5.5, 61, -1.5)
+		seg.global_transform.origin.y = y_level
+		seg.rotation_degrees = rotation_offset
 		segments.append(seg)
 
 func _process(delta):

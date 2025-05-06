@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://dce6qcu4xisuq" path="res://toukka_kontrollit.gd" id="1_sy5k4"]
 [ext_resource type="Texture2D" uid="uid://cbj7nsmxwritr" path="res://praying_mantis/textures/Insect_Praying_Mantis_baseColor.png" id="2_j2q8x"]
 [ext_resource type="PackedScene" uid="uid://ddc0s7u1vma6s" path="res://orto-field/orto-field.fbx" id="3_112p8"]
+[ext_resource type="PackedScene" uid="uid://b084higv2e8gb" path="res://modular_electricity_poles_4k.blend/sahko_tolppa_1.fbx" id="3_bss38"]
 [ext_resource type="Script" uid="uid://dd0bsdn5ojtv3" path="res://orto-field/tausta.gd" id="3_e2u21"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_nxiqb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy5k4"]
 
@@ -1230,11 +1229,6 @@ background_color = Color(0.626538, 0.838061, 1, 1)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(-2.18557e-06, 0, 4, 0, 0.189, 0, -50, 0, -1.74846e-07, 0, 0, -10.7072)
-mesh = SubResource("BoxMesh_nxiqb")
-skeleton = NodePath("../..")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(-1.09278e-06, 0, 4, 0, 0.189, 0, -25, 0, -1.74846e-07, 0, 0, 0)
 shape = SubResource("BoxShape3D_sy5k4")
@@ -1529,3 +1523,15 @@ environment = SubResource("Environment_112p8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6807)
 script = ExtResource("3_e2u21")
 background_scene = ExtResource("3_112p8")
+segment_length = 225.0
+num_segments = 6
+
+[node name="Tolpat" type="Node3D" parent="."]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
+script = ExtResource("3_e2u21")
+background_scene = ExtResource("3_bss38")
+segment_length = 43.0
+move_speed = 10.0
+y_level = -12.3
+num_segments = 5
+rotation_offset = Vector3(0, 0, 0)
