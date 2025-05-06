@@ -1,4 +1,4 @@
 
 extends Node
 
-var paihtynyt : bool = true # Päihtynyt tila
+var paihtynyt : bool = false # Päihtynyt tila
