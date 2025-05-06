@@ -18,11 +18,13 @@ func _physics_process(delta):
 	# Handle input (one press per frame)
 	if Input.is_action_just_pressed("move_left"):
 		print("Move left")
-		animation_player.play("mantis_walk")
+		if !animation_player.current_animation == "mantis_death":
+			animation_player.play("mantis_walk")
 		current_lane -= 1
 	elif Input.is_action_just_pressed("move_right"):
 		print("Move right")
-		animation_player.play("mantis_walk")
+		if !animation_player.current_animation == "mantis_death":
+			animation_player.play("mantis_walk")
 		current_lane += 1
 	elif Input.is_action_just_pressed("move_jump"):
 		if is_on_floor():
