@@ -1,42 +1,20 @@
-[gd_scene load_steps=20 format=4 uid="uid://qt5jmca5lsgw"]
+[gd_scene load_steps=26 format=4 uid="uid://qt5jmca5lsgw"]
 
 [ext_resource type="Script" uid="uid://dce6qcu4xisuq" path="res://toukka_kontrollit.gd" id="1_sy5k4"]
 [ext_resource type="Texture2D" uid="uid://cbj7nsmxwritr" path="res://praying_mantis/textures/Insect_Praying_Mantis_baseColor.png" id="2_j2q8x"]
 [ext_resource type="PackedScene" uid="uid://ddc0s7u1vma6s" path="res://orto-field/orto-field.fbx" id="3_112p8"]
-[ext_resource type="PackedScene" uid="uid://b084higv2e8gb" path="res://modular_electricity_poles_4k.blend/sahko_tolppa_1.fbx" id="3_bss38"]
 [ext_resource type="Script" uid="uid://dd0bsdn5ojtv3" path="res://orto-field/tausta.gd" id="3_e2u21"]
+[ext_resource type="Texture2D" uid="uid://dl57el46g1ni5" path="res://pilltablet/source/Pill/Pill.png" id="5_tda05"]
+[ext_resource type="ArrayMesh" uid="uid://bcr7myodjs4u4" path="res://pilltablet/source/Pill/Pill.obj" id="6_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://b5udku51q577w" path="res://Heineken Bottle/HENEKEN.PNG" id="7_l6pdb"]
+[ext_resource type="ArrayMesh" uid="uid://b3pgct011v1he" path="res://Heineken Bottle/heineken.obj" id="8_r657h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nxiqb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy5k4"]
 
 [sub_resource type="GDScript" id="GDScript_l6pdb"]
 script/source = "extends Camera3D
-var initial_position : Vector3              # To store the initial position
-var initial_rotation : Vector3              # To store the initial rotation
-@export var drunk_effect_strength : float = 0.05  # Strength of drunken effect (shake)
-@export var drunk_rotation_strength : float = 1.0 # Strength of drunken rotation effect
-
-# Timer variables for shaking effect
-var shake_time : float = 0.0  # Time to simulate the oscillation
-
-func _ready():
-	initial_position = global_position  # Initialize initial position
-	initial_rotation = rotation_degrees  # Initialize initial rotation
-func _process(delta):
-	if Global.paihtynyt:
-		shake_time += delta * 4.0  # Increase speed of shaking effect over time
-
-		# Apply a more controlled drunken shake effect
-		var shake_intensity = drunk_effect_strength * 0.5  # Reduce overall shake strength
-		
-		# Sine-based shaking effect for smooth, wobbly motion
-		global_position.x = initial_position.x + sin(shake_time * 4.0) * shake_intensity
-		global_position.y = initial_position.y + cos(shake_time * 4.0) * shake_intensity
-		global_position.z = initial_position.z + sin(shake_time * 3.5) * shake_intensity
-
-		# Sine-based rotation effect for wobbling rotation
-		rotation_degrees.x = initial_rotation.x + sin(shake_time * 2.5) * drunk_rotation_strength
-		rotation_degrees.y = initial_rotation.y + cos(shake_time * 3.0) * drunk_rotation_strength
-		rotation_degrees.z = initial_rotation.z + sin(shake_time * 2.0) * drunk_rotation_strength
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cpxx"]
@@ -1256,9 +1234,20 @@ height = 1.1269
 background_mode = 1
 background_color = Color(0.626538, 0.838061, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6pdb"]
+albedo_texture = ExtResource("5_tda05")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0urt"]
+albedo_texture = ExtResource("7_l6pdb")
+
 [node name="Peli" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-2.18557e-06, 0, 4, 0, 0.189, 0, -50, 0, -1.74846e-07, 0, 0, -10.7072)
+mesh = SubResource("BoxMesh_nxiqb")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(-1.09278e-06, 0, 4, 0, 0.189, 0, -25, 0, -1.74846e-07, 0, 0, 0)
@@ -1268,15 +1257,19 @@ shape = SubResource("BoxShape3D_sy5k4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.368, 12)
 
 [node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, -0.0103562, 2.23411, 11.9284)
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0.007, 2.1, 12)
 fov = 50.0
 script = SubResource("GDScript_l6pdb")
-drunk_effect_strength = 0.2
-drunk_rotation_strength = 1.5
 
 [node name="Toukka Model" type="CharacterBody3D" parent="."]
 transform = Transform3D(-2.965, 0, -2.59209e-07, 0, 2.965, 0, 2.59209e-07, 0, -2.965, 4.37114e-07, 0, 10)
 script = ExtResource("1_sy5k4")
+lane_offset = null
+total_lanes = null
+jump_velocity = null
+gravity = null
+drunk_effect_strength = null
+drunk_rotation_strength = null
 
 [node name="Sketchfab_model" type="Node3D" parent="Toukka Model"]
 transform = Transform3D(0.837, 4.9893e-15, 2.18089e-22, 0, -3.65864e-08, 0.837, 4.9893e-15, -0.837, -3.65864e-08, 0, 0.0792159, 0)
@@ -1557,15 +1550,13 @@ environment = SubResource("Environment_112p8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6807)
 script = ExtResource("3_e2u21")
 background_scene = ExtResource("3_112p8")
-segment_length = 225.0
-num_segments = 6
 
-[node name="Tolpat" type="Node3D" parent="."]
-transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
-script = ExtResource("3_e2u21")
-background_scene = ExtResource("3_bss38")
-segment_length = 43.0
-move_speed = 10.0
-y_level = -12.3
-num_segments = 5
-rotation_offset = Vector3(0, 0, 0)
+[node name="Pill" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.643241, -0.0248671, -0.76526, -0.765663, -0.0223187, -0.642855, -0.00109368, 0.999442, -0.0333962, -1.12532, 2.16511, -0.413665)
+material_override = SubResource("StandardMaterial3D_l6pdb")
+mesh = ExtResource("6_qn3nj")
+
+[node name="Heineken" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00493753, -0.000129294, -0.999988, -0.0261769, 0.999657, 0, 0.999645, 0.0261766, -0.00493922, -2.69336, -0.192466, 3.7511)
+material_override = SubResource("StandardMaterial3D_f0urt")
+mesh = ExtResource("8_r657h")

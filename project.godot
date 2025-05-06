@@ -15,9 +15,15 @@ run/main_scene="uid://cka2u3hannwlo"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+<<<<<<< Updated upstream
 [filesystem]
 
 import/blender/enabled=false
+=======
+[autoload]
+
+Global="*res://global.gd"
+>>>>>>> Stashed changes
 
 [input]
 
