@@ -19,7 +19,9 @@ func _process(delta: float) -> void:
 			leaderboard.add_score(player_name, Global.survival_time)
 			print(r"Aika tallennettu polkuun: C:\Users\[KÄYTTÄJÄ]\AppData\Roaming\Godot\app_userdata\toukka\leaderboard.json")
 			print("Aikasi: ", round(Global.survival_time * 10) / 10.0)
+			get_tree().change_scene_to_file("res://menu.tscn")
 			Global.survival_time = 0  # Prevent resubmitting
+			Global.move_speed = 10
 
 func _physics_process(delta):
 	if is_on_floor() and animation_player.current_animation != "mantis_walk":

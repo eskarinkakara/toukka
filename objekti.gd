@@ -1,6 +1,5 @@
 extends Node3D
 
-@export var move_speed: float = 10.0
 @export var rotation_speed: Vector3 = Vector3(0, 180, 30)
 @export var destroy_z_threshold: float = 25.0
 @export_enum("olut", "crow") var pickup_type: String = "olut"
@@ -10,7 +9,7 @@ func _ready():
 	$Area3D.body_entered.connect(_on_body_entered)
 
 func _process(delta):
-	global_translate(Vector3(0, 0, move_speed * delta))
+	global_translate(Vector3(0, 0, Global.move_speed * delta))
 
 	rotate_x(deg_to_rad(rotation_speed.x * delta))
 	rotate_y(deg_to_rad(rotation_speed.y * delta))
@@ -30,6 +29,7 @@ func _apply_pickup_effect(body):
 		"olut":
 			Global.set_paihtynyt(true)
 		"crow":
+			Global.set_paihtynyt(false)
 			Global.player_alive = false
 			print("Pelaaja kuollut")
 		_:

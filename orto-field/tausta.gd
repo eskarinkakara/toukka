@@ -2,7 +2,7 @@ extends Node3D
 
 @export var background_scene: PackedScene
 @export var segment_length: float = 200.0
-@export var move_speed: float = 5.0
+@export var move_speed_multiplier: float = 1
 @export var y_level: float = -25.0
 @export var num_segments: int = 3
 @export var rotation_offset: Vector3 = Vector3(5.5, 61, -1.5)
@@ -21,7 +21,7 @@ func _ready():
 
 func _process(delta):
 	for seg in segments:
-		seg.global_translate(Vector3(0, 0, move_speed * delta))
+		seg.global_translate(Vector3(0, 0, (Global.move_speed*move_speed_multiplier) * delta))
 
 	# Check if the first segment moved past the camera
 	var first_seg = segments[0]

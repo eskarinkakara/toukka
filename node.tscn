@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dce6qcu4xisuq" path="res://toukka_kontrollit.gd" id="1_sy5k4"]
 [ext_resource type="Texture2D" uid="uid://cbj7nsmxwritr" path="res://praying_mantis/textures/Insect_Praying_Mantis_baseColor.png" id="2_j2q8x"]
-[ext_resource type="Script" uid="uid://dordune4rtl2" path="res://Leaderboard.gd" id="2_jfkdj"]
+[ext_resource type="Script" uid="uid://dordune4rtl2" path="res://leaderboard.gd" id="2_jfkdj"]
 [ext_resource type="PackedScene" uid="uid://ddc0s7u1vma6s" path="res://orto-field/orto-field.fbx" id="3_112p8"]
 [ext_resource type="PackedScene" uid="uid://b084higv2e8gb" path="res://modular_electricity_poles_4k.blend/sahko_tolppa_1.fbx" id="3_bss38"]
 [ext_resource type="Script" uid="uid://dd0bsdn5ojtv3" path="res://orto-field/tausta.gd" id="3_e2u21"]
 [ext_resource type="Script" uid="uid://dmw1toeoq4smr" path="res://spawnaus.gd" id="6_qn3nj"]
 [ext_resource type="PackedScene" uid="uid://s22ji41toh3o" path="res://heineken_pullo.tscn" id="7_qn3nj"]
-[ext_resource type="PackedScene" path="res://crow.tscn" id="8_l6pdb"]
+[ext_resource type="PackedScene" uid="uid://dkdh0qwigfj5c" path="res://crow.tscn" id="8_l6pdb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy5k4"]
 
@@ -1578,7 +1578,6 @@ transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 script = ExtResource("3_e2u21")
 background_scene = ExtResource("3_bss38")
 segment_length = 43.0
-move_speed = 10.0
 y_level = -12.3
 rotation_offset = Vector3(0, 0, 0)
 
