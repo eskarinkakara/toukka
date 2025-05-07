@@ -1272,6 +1272,7 @@ background_color = Color(0.626538, 0.838061, 1, 1)
 [node name="Peli" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(-1.09278e-06, 0, 4, 0, 0.189, 0, -25, 0, -1.74846e-07, 0, 0, 0)
@@ -1288,7 +1289,7 @@ drunk_effect_strength = 0.2
 drunk_rotation_strength = 1.5
 
 [node name="Toukka Model" type="CharacterBody3D" parent="."]
-transform = Transform3D(-2.965, 0, -2.59209e-07, 0, 2.965, 0, 2.59209e-07, 0, -2.965, 4.37114e-07, 0, 10)
+transform = Transform3D(-2.965, 0, -2.59209e-07, 0, 2.965, 0, 2.59209e-07, 0, -2.965, 4.37114e-07, 0.2965, 10)
 script = ExtResource("1_sy5k4")
 
 [node name="Sketchfab_model" type="Node3D" parent="Toukka Model"]
@@ -1558,7 +1559,7 @@ libraries = {
 autoplay = "mantis_idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Toukka Model"]
-transform = Transform3D(-1.26343e-08, 0, -0.289039, 0, 0.337268, 0, 0.289039, 0, -1.26343e-08, 0, 0.223609, 0)
+transform = Transform3D(-3.62805e-09, 0, -0.083, 0, 0.083, 0, 0.083, 0, -3.62805e-09, 0, 0.121085, 0)
 shape = SubResource("CapsuleShape3D_j2q8x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -1572,6 +1573,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6807)
 script = ExtResource("3_e2u21")
 background_scene = ExtResource("3_112p8")
 segment_length = 225.0
+move_speed_multiplier = 0.5
+num_segments = 4
 
 [node name="Tolpat" type="Node3D" parent="."]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
@@ -1579,6 +1582,7 @@ script = ExtResource("3_e2u21")
 background_scene = ExtResource("3_bss38")
 segment_length = 43.0
 y_level = -12.3
+num_segments = 5
 rotation_offset = Vector3(0, 0, 0)
 
 [node name="Crows" type="Node3D" parent="."]
