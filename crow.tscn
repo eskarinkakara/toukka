@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf1v4w8gv5rnm"]
+[gd_scene load_steps=6 format=3 uid="uid://c2mthmoht6vwm"]
 
 [ext_resource type="PackedScene" uid="uid://ch57dgv3qrcnp" path="res://crow/source/Crow.fbx" id="1_2mp86"]
 [ext_resource type="Texture2D" uid="uid://di32l52mtmfq0" path="res://crow/textures/Crow_BaseColor.TGA.png" id="2_k41no"]

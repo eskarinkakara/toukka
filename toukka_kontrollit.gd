@@ -1,6 +1,7 @@
 extends CharacterBody3D
 var animation_player : AnimationPlayer
-
+var leaderboard = load("res://leaderboard.gd").new()
+@export var player_name: String = "Pelaaja"
 @export var lane_offset := 1.0              # Distance between lanes
 @export var total_lanes := 3                # Should be an odd number (so there's a center lane)
 @export var jump_velocity := 4.5            # Jump speed
@@ -11,6 +12,14 @@ var current_lane := 0                       # 0 = center, -1 = left, 1 = right
 func _ready():
 	animation_player = $AnimationPlayer
 	add_to_group("player")
+
+func _process(delta: float) -> void:
+	if !Global.player_alive:
+		if Global.survival_time > 0:
+			leaderboard.add_score(player_name, Global.survival_time)
+			print(r"Aika tallennettu polkuun: C:\Users\[KÄYTTÄJÄ]\AppData\Roaming\Godot\app_userdata\toukka\leaderboard.json")
+			print("Aikasi: ", Global.survival_time)
+			Global.survival_time = 0  # Prevent resubmitting
 
 func _physics_process(delta):
 	if is_on_floor() and animation_player.current_animation != "mantis_walk":

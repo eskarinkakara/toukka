@@ -3,7 +3,7 @@ extends Node3D
 @export var prefab: PackedScene
 @export var lane_offset := 1.0
 @export var total_lanes := 3
-@export var spawn_z := -50.0
+@export var spawn_z := -25.0
 @export var spawn_interval_range := Vector2(0.5, 2.0)
 @export var move_speed := 10.0  # Speed to apply to each spawned object
 

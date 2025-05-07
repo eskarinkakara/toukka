@@ -1,5 +1,5 @@
 extends Node
-
+var survival_time: float = 0.0
 var valuutta: float = 0.0
 var player_alive : bool = true
 var paihtynyt: bool = false
@@ -42,3 +42,9 @@ func _on_drunk_timeout():
 	paihtynyt = false
 	paihtynytStrength = 0.9
 	print("ei päihtynyt")
+
+# Called every frame to update the player's survival time.
+func _process(delta):
+	if Global.player_alive:
+		survival_time += delta
+		survival_time = round(survival_time * 10) / 10.0
