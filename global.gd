@@ -1,7 +1,7 @@
 extends Node
 
 var valuutta: float = 0.0
-
+var player_alive : bool = true
 var paihtynyt: bool = false
 var paihtynytStrength: float = 1.0
 @export var drunk_duration: float = 5.0

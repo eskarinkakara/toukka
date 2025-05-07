@@ -3,7 +3,7 @@ extends Node3D
 @export var move_speed: float = 5.0
 @export var rotation_speed: Vector3 = Vector3(0, 180, 30)
 @export var destroy_z_threshold: float = 25.0
-@export_enum("olut", "option2") var pickup_type: String = "olut"
+@export_enum("olut", "crow") var pickup_type: String = "olut"
 
 func _ready():
 	# Connect the Area3D's signal
@@ -29,7 +29,8 @@ func _apply_pickup_effect(body):
 	match pickup_type:
 		"olut":
 			Global.set_paihtynyt(true)
-		"option2":
-			Global.set_paihtynyt(false)
+		"crow":
+			Global.player_alive = false
+			print("Pelaaja kuollut")
 		_:
 			print("Unknown pickup type")
