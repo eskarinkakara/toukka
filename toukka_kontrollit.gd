@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		if Global.survival_time > 0:
 			leaderboard.add_score(player_name, Global.survival_time)
 			print(r"Aika tallennettu polkuun: C:\Users\[KÄYTTÄJÄ]\AppData\Roaming\Godot\app_userdata\toukka\leaderboard.json")
-			print("Aikasi: ", Global.survival_time)
+			print("Aikasi: ", round(Global.survival_time * 10) / 10.0)
 			Global.survival_time = 0  # Prevent resubmitting
 
 func _physics_process(delta):

@@ -7,7 +7,7 @@ func _init():
 	load_scores()
  
 func add_score(player_name: String, survival_time: float) -> void:
-	scores.append({ "name": player_name, "time": survival_time })
+	scores.append({ "name": player_name, "time": round(survival_time * 10) / 10.0 })
 	scores.sort_custom(func(a, b): return b["time"] < a["time"])  # Descending
 	save_scores()
  

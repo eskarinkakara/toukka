@@ -47,4 +47,3 @@ func _on_drunk_timeout():
 func _process(delta):
 	if Global.player_alive:
 		survival_time += delta
-		survival_time = round(survival_time * 10) / 10.0
