@@ -9,7 +9,7 @@ func _on_start_button_pressed():
 
 
 func _on_options_button_pressed():
-	var options = load("res://menu.tscn").instance()
+	var options = load("res://settings.tscn").instantiate()
 	get_tree().current_scene.add_child(options)
 
 
