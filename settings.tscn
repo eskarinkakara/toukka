@@ -48,6 +48,7 @@ popup/item_2/text = "1280x720"
 popup/item_2/id = 2
 
 [node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Fullscreen"
