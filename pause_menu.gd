@@ -1,41 +1,22 @@
 extends Control
 
-func _ready():
-	$AnimationPlayer.play("RESET")
-
-func resume():
-	get_tree().paused = false
-	$AnimationPlayer.play_backwards("blur")
+var _is_paused:bool = false:
+	set = set_paused
 	
-func pause():
-	get_tree().paused = true
-	$AnimationPlayer.play("blur")
-
-func testEsc():
-	if Input.is_action_just_pressed("esc") and get_tree().paused:
-		pause()
-	elif Input.is_action_just_pressed("esc") and get_tree().paused:
-		resume()
-
-
-func _on_resume_pressed() -> void:
-	resume()
 	
-func _on_restart_pressed() -> void:
-	get_tree().reload_current_scene()
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		_is_paused = !_is_paused
+	
+	
+func set_paused(value:bool) ->void:
+	_is_paused = value
+	get_tree().paused = _is_paused
+	visible = _is_paused
 
+func _on_resume_btn_pressed() -> void:
+	_is_paused = false
 
-func _on_settings_pressed() -> void:
-	var options = load("res://settings.tscn").instantiate()
-	get_tree().current_scene.add_child(options)
-
-
-func _on_main_menu_pressed() -> void:
+func _on_main_menu_btn_pressed() -> void:
+	_is_paused = false
 	get_tree().change_scene_to_file("res://menu.tscn")
-
-
-func _on_quit_game_pressed() -> void:
-	get_tree().quit()
-
-func _process(delta):
-	testEsc()

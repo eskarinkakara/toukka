@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dmw1toeoq4smr" path="res://spawnaus.gd" id="6_qn3nj"]
 [ext_resource type="PackedScene" uid="uid://s22ji41toh3o" path="res://heineken_pullo.tscn" id="7_qn3nj"]
 [ext_resource type="PackedScene" uid="uid://dkdh0qwigfj5c" path="res://crow.tscn" id="8_l6pdb"]
-[ext_resource type="PackedScene" uid="uid://4n0h0b3kfpm7" path="res://pause_menu.tscn" id="10_f0urt"]
+[ext_resource type="PackedScene" uid="uid://rvwgqbh1qonc" path="res://PauseMenu.tscn" id="10_f0urt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy5k4"]
 
